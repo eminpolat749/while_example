@@ -1,0 +1,40 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+#include<conio.h>
+#include<stdlib.h>
+int main(void)
+{
+	int c;
+	int min, max;
+	int ival;
+	int cnt = 0;
+	int sum = 0;
+
+	while (1) {
+		printf("tam sayi girecek misiniz? evet(e) hayir(h)\n");
+		while ((c = _getch()) != 'e' && c != 'h')
+			;
+		printf("%c\n", c);
+		if (c == 'h')
+			break;
+		printf("tam sayiyi girin:\n");
+		ival = (rand() % 2 ? 1 : -1) * rand();
+		if (!cnt)
+			min = max = ival;
+		else if (ival > max)
+			max = ival;
+		else if (ival < min)
+			min = ival;
+		++cnt;
+		sum += ival;
+		printf("%d\n", ival);
+	}
+	if (cnt) {
+		printf("toplam %d sayi girdiniz\n", cnt);
+		printf("ortalama = %f\n", (double)sum / cnt);
+		printf("max = %d\n", max);
+		printf("min = %d\n", min);
+	}
+	else
+		printf("hic sayi girmediniz\n");
+}
